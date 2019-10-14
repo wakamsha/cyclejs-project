@@ -1,0 +1,12 @@
+{
+  "name": "@cyclejs-project/app",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "reset": "rm -rf dist; mkdir -p dist/",
+    "copy": "cp src/index.html dist/index.html",
+    "script": "webpack --progress --colors -d --develop",
+    "serve": "browser-sync start -c ../../bs-config.js",
+    "start": "yarn reset; yarn copy; run-p \"script -- --variant {1} {2} {3}\" \"serve -- --variant {1} {4}\" --"
+  }
+}

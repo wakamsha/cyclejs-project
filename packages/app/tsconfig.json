@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./"
+    // "paths": {
+    //   "@lf-webapp-frontend/api/*": ["../api/dist/*"],
+    //   "@lf-webapp-frontend/config/constants": ["../config/src/scripts/constants"],
+    //   "@lf-webapp-frontend/icon": ["../icon/dist/index"],
+    //   "@lf-webapp-frontend/core/*": ["../core/src/scripts/*"]
+    // }
+  }
+}

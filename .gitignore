@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+dist/
+temp/
+packages/api/src/*.yaml
+packages/showcase/**/ExampleSpec.ts
+
+.node-version
+.envrc
+.vscode

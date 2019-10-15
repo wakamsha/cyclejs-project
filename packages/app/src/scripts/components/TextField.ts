@@ -1,14 +1,13 @@
-import { CycleDOMEvent, VNode, div, input, label } from '@cycle/dom';
-import { Observable } from 'rxjs';
 import { SiDOM, SoDOM } from '../drivers/interface';
-import { map, startWith } from 'rxjs/operators';
+import { Stream } from 'xstream';
+import { VNode, div, input, label } from '@cycle/dom';
 import isolate from '@cycle/isolate';
 
 type InputType = 'text' | 'email' | 'password' | 'number';
 
 type Props = {
   value: string;
-  formLabel?: string;
+  label?: string;
   type?: InputType;
   placeholder?: string;
   // required: boolean;
@@ -19,27 +18,17 @@ type So = {
 } & SoDOM;
 
 type Si = {
-  value$: Observable<string>;
+  value$: Stream<string>;
 } & SiDOM;
 
-function render({
-  value,
-  formLabel,
-  type,
-  placeholder,
-}: {
-  value: string;
-  formLabel?: string;
-  type?: InputType;
-  placeholder?: string;
-}): VNode {
+function render({ value, props }: { value: string; props: Props }): VNode {
   return div([
-    formLabel ? label([formLabel]) : null,
+    props.label ? label([props.label]) : null,
     div([
       input('.event-input', {
         attrs: {
-          type,
-          placeholder,
+          type: props.type,
+          placeholder: props.placeholder,
         },
         props: {
           value,
@@ -50,14 +39,11 @@ function render({
 }
 
 function Component({ DOM, props }: So): Si {
-  const eventInput$ = DOM.select('.event-input').events('input');
+  const eventInput$: Stream<Event> = DOM.select('.event-input').events('input');
 
-  const value$ = eventInput$.pipe(
-    map((e: CycleDOMEvent) => (e.ownerTarget as HTMLInputElement).value),
-    startWith(props.value),
-  );
+  const value$ = eventInput$.map(e => (e.target as HTMLInputElement).value).startWith(props.value);
 
-  const dom$: Observable<VNode> = value$.pipe(map(value => render({ ...props, value })));
+  const dom$ = value$.map(value => render({ value, props }));
 
   return {
     DOM: dom$,

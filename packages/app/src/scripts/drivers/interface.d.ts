@@ -1,10 +1,12 @@
-import { DOMSource } from '@cycle/dom/lib/cjs/rxjs';
-import { Observable } from 'rxjs';
-import { VNode } from '@cycle/dom';
+import { DOMSource, VNode } from '@cycle/dom/lib/cjs';
+import { RouterSource } from 'cyclic-router';
+import { Stream } from 'xstream';
 
 export type SoDOM = { DOM: DOMSource };
+export type SoRouter = { router: RouterSource };
 
-export type SiDOM = { DOM: Observable<VNode> };
+export type SiDOM = { DOM: Stream<VNode> };
+export type SiRouter = { router: Stream<string> };
 
-export type SoAll = SoDOM;
-export type SiAll = SiDOM;
+export type SoAll = SoDOM & SoRouter;
+export type SiAll = SiDOM & SiRouter;

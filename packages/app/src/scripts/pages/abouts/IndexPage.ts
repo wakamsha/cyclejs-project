@@ -9,45 +9,43 @@ function render({ bmi, hSliderDOM, wSliderDOM }: { bmi: number; hSliderDOM: VNod
   return div([h1(['About']), hSliderDOM, wSliderDOM, p([bmi]), hr(), button('.event-click-go-home', ['Home >>'])]);
 }
 
-export class AboutIndexPage {
-  public main({ DOM }: SoAll): SiAll {
-    const eventClickGoHome$: Stream<Event> = DOM.select('.event-click-go-home').events('click');
+export function AboutIndexPage({ DOM }: SoAll): SiAll {
+  const eventClickGoHome$: Stream<Event> = DOM.select('.event-click-go-home').events('click');
 
-    const heightSlider = LabeledSlider({
-      DOM,
-      props: {
-        label: 'Height',
-        unit: 'cm',
-        min: 140,
-        max: 220,
-        init: 140,
-      },
-    });
+  const heightSlider = LabeledSlider({
+    DOM,
+    props: {
+      label: 'Height',
+      unit: 'cm',
+      min: 140,
+      max: 220,
+      init: 140,
+    },
+  });
 
-    const weightSlider = LabeledSlider({
-      DOM,
-      props: {
-        label: 'Weight',
-        unit: 'kg',
-        min: 40,
-        max: 150,
-        init: 60,
-      },
-    });
+  const weightSlider = LabeledSlider({
+    DOM,
+    props: {
+      label: 'Weight',
+      unit: 'kg',
+      min: 40,
+      max: 150,
+      init: 60,
+    },
+  });
 
-    const store$: Stream<Store> = xs
-      .combine(heightSlider.value$, weightSlider.value$)
-      .map(([h, w]) => makeUpdateBMIAction(h, w))
-      .fold((acc: Store, action: Action<Store>) => action(acc), initialStore);
+  const store$: Stream<Store> = xs
+    .combine(heightSlider.value$, weightSlider.value$)
+    .map(([h, w]) => makeUpdateBMIAction(h, w))
+    .fold((acc: Store, action: Action<Store>) => action(acc), initialStore);
 
-    const dom$ = xs
-      .combine(store$, weightSlider.DOM, heightSlider.DOM)
-      .map(([{ bmi }, wSliderDOM, hSliderDOM]) => render({ bmi, wSliderDOM, hSliderDOM }));
-    const router$ = eventClickGoHome$.mapTo('/');
+  const dom$ = xs
+    .combine(store$, weightSlider.DOM, heightSlider.DOM)
+    .map(([{ bmi }, wSliderDOM, hSliderDOM]) => render({ bmi, wSliderDOM, hSliderDOM }));
+  const router$ = eventClickGoHome$.mapTo('/');
 
-    return {
-      DOM: dom$,
-      router: router$,
-    };
-  }
+  return {
+    DOM: dom$,
+    router: router$,
+  };
 }

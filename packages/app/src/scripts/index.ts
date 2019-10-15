@@ -5,13 +5,15 @@ import { SiAll, SoAll } from './drivers/interface';
 import { assoc } from 'ramda';
 import { makeDOMDriver } from '@cycle/dom';
 import { makeHistoryDriver } from '@cycle/history';
+import { makeScrollDriver } from './drivers/ScrollDriver';
 import run from '@cycle/run';
 import switchPath from 'switch-path';
+import xs from 'xstream';
 
 function main(so: SoAll): SiAll {
   const match$ = so.router.define({
-    '/': new IndexPage().main,
-    '/about': new AboutIndexPage().main,
+    '/': IndexPage,
+    '/about': AboutIndexPage,
   });
 
   const page$ = match$.map((match: RouteMatcherReturn) =>
@@ -21,10 +23,12 @@ function main(so: SoAll): SiAll {
   return {
     DOM: page$.map((sinks: SiAll) => sinks.DOM).flatten(),
     router: page$.map((sinks: SiAll) => sinks.router).flatten(),
+    Scroll: page$.map((sinks: SiAll) => sinks.Scroll || xs.never()).flatten(),
   };
 }
 
 run(routerify(main, switchPath), {
   DOM: makeDOMDriver('#app'),
   history: makeHistoryDriver(),
+  Scroll: makeScrollDriver(),
 });

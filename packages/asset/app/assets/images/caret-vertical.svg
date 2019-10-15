@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.844 16.667">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #656565;
+      }
+    </style>
+  </defs>
+  <g id="caret-vertical" transform="translate(0 0)">
+    <path id="パス_9610" data-name="パス 9610" class="cls-1" d="M10.55,14.569,13.938,8l3.455,6.562Z" transform="translate(-10.55 -8)"/>
+    <path id="パス_9611" data-name="パス 9611" class="cls-1" d="M17.394,34.98l-3.387,6.569L10.55,34.983Z" transform="translate(-10.55 -24.882)"/>
+  </g>
+</svg>

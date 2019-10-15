@@ -1,6 +1,6 @@
 {
   "name": "@cyclejs-project/icon",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
     "reset": "rm -rf dist/; mkdir -p dist/",

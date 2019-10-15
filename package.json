@@ -48,6 +48,7 @@
     "@cycle/isolate": "^5.1.0",
     "@cycle/run": "^5.3.0",
     "cyclic-router": "^6.0.0",
+    "emotion": "^10.0.17",
     "ramda": "^0.26.1",
     "switch-path": "^1.2.0"
   },
@@ -66,7 +67,7 @@
     "api": "    yarn workspace @cyclejs-project/api",
     "app": "    yarn workspace @cyclejs-project/app",
     "icon": "   yarn workspace @cyclejs-project/icon",
-    "catalog": "yarn workspace @cyclejs-project/showcase",
+    "catalog": "yarn workspace @cyclejs-project/catalog",
     "test": "   yarn eslint -c ./.eslintrc.js ./packages/**/src/**/*.{ts,tsx}"
   }
 }

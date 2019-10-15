@@ -1,0 +1,10 @@
+{
+  "name": "@cyclejs-project/icon",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "reset": "rm -rf dist/; mkdir -p dist/",
+    "generate": "node ./scripts/build; yarn eslint -c ../../.eslintrc.js --fix dist/*.ts",
+    "codegen": "yarn reset; yarn generate"
+  }
+}

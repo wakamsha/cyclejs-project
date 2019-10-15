@@ -68,3 +68,6 @@ packages/showcase/**/ExampleSpec.ts
 .node-version
 .envrc
 .vscode
+
+# Icon must end with two \r
+!Icon

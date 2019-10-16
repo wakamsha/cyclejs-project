@@ -1,7 +1,7 @@
-import { Action } from 'src/scripts/interface';
-import { LabeledSlider } from 'src/scripts/components/LabeledSlider';
-import { SiAll, SoAll } from 'src/scripts/drivers/interface';
-import { Store, initialStore, makeUpdateBMIAction } from 'src/scripts/stores/AboutStore';
+import { Action } from '../../interface';
+import { LabeledSlider } from '@cyclejs-project/core/components/inputs/LabeledSlider';
+import { SiAll, SoAll } from '../../drivers/interface';
+import { Store, initialStore, makeUpdateBMIAction } from '../../stores/AboutStore';
 import { VNode, button, div, h1, hr, p } from '@cycle/dom';
 import xs, { Stream } from 'xstream';
 

@@ -1,4 +1,4 @@
-import { SiDOM, SoDOM } from '../drivers/interface';
+import { SiDOM, SoDOM } from '../../drivers/interface';
 import { Stream } from 'xstream';
 import { VNode, div, input, label } from '@cycle/dom';
 import isolate from '@cycle/isolate';

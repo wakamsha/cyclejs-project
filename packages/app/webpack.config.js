@@ -20,9 +20,9 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js'],
     modules: ['node_modules'],
     plugins: [new TsconfigPathsPlugin()],
-    // alias: {
-    //   '@cyclejs-project/config/variant': path.resolve(__dirname, `../config/src/scripts/variants/${variant}`),
-    // }
+    alias: {
+      '@cyclejs-project/config/variant': path.resolve(__dirname, `../config/src/scripts/variants/${variant}`),
+    },
   },
   module: {
     rules: [

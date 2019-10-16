@@ -1,7 +1,7 @@
-import { Action } from 'src/scripts/interface';
-import { SiAll, SoAll } from 'src/scripts/drivers/interface';
-import { Store, initialStore, makeUpdateNameAction } from 'src/scripts/stores/HomeStore';
-import { TextField } from 'src/scripts/components/TextField';
+import { Action } from '../../interface';
+import { SiAll, SoAll } from '../../drivers/interface';
+import { Store, initialStore, makeUpdateNameAction } from '../../stores/HomeStore';
+import { TextField } from '@cyclejs-project/core/components/inputs/TextField';
 import { VNode, button, div, h1, input, p } from '@cycle/dom';
 import xs, { Stream } from 'xstream';
 

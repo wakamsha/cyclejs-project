@@ -63,7 +63,7 @@ typings/
 dist/
 temp/
 packages/api/src/*.yaml
-packages/showcase/**/ExampleSpec.ts
+packages/catalog/**/ExampleSpec.ts
 
 .node-version
 .envrc

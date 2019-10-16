@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@cyclejs-project/api/*": ["../api/dist/*"],
+      "@cyclejs-project/app/*": ["../app/src/scripts/*"],
+      "@cyclejs-project/config/constants": ["../config/src/scripts/constants"],
+      "@cyclejs-project/icon": ["../icon/dist/index"],
+      "@cyclejs-project/core/*": ["../core/src/scripts/*"]
+    }
+  }
+}

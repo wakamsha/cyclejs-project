@@ -1,6 +1,6 @@
 import { FontSize } from '../constants/VO';
 import { IconName, iconElements } from '@cyclejs-project/icon';
-import { SiAll, SoAll } from 'src/scripts/drivers/interface';
+import { SiAll, SoAll } from '../drivers/interface';
 import { VNode, li, span, svg, ul } from '@cycle/dom';
 import { css } from 'emotion';
 import { gutter, square } from '../helpers/Style';

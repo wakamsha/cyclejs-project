@@ -9,3 +9,6 @@ export type SiDOM = { DOM: Stream<VNode> };
 export type SiRouter = { router: Stream<string> };
 
 export type SiAllRouter = { router?: Stream<string> };
+
+export type SoAll = SoDOM & SoRouter;
+export type SiAll = SiDOM & SiAllRouter;

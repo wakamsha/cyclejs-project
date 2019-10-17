@@ -1,7 +1,7 @@
 import { Action } from '../../interface';
 import { SiAll, SoAll } from '../../drivers/interface';
 import { Store, initialStore, makeUpdateNameAction } from '../../stores/HomeStore';
-import { TextField } from '@cyclejs-project/core/components/inputs/TextField';
+import { TextField } from '@cyclejs-project/core/renders/inputs/TextField';
 import { VNode, button, div, h1, input, p } from '@cycle/dom';
 import xs, { Stream } from 'xstream';
 
@@ -25,7 +25,7 @@ function renderScrollForm({ scroll }: { scroll: string }): VNode {
   );
 }
 
-function render({ name, nameFieldDOM, scroll }: { name: string; nameFieldDOM: VNode; scroll: string }): VNode {
+function render({ name, scroll }: { name: string; scroll: string }): VNode {
   return div(
     {
       style: {
@@ -34,7 +34,7 @@ function render({ name, nameFieldDOM, scroll }: { name: string; nameFieldDOM: VN
     },
     [
       h1(['hello world!']),
-      nameFieldDOM,
+      TextField(`.event-input-name`, { value: name, label: 'Name' }),
       p([name ? `Hello, ${name}!!` : 'What is your name?']),
       button('.event-click-go-about', ['About >>']),
       renderScrollForm({ scroll }),
@@ -45,23 +45,13 @@ function render({ name, nameFieldDOM, scroll }: { name: string; nameFieldDOM: VN
 export function IndexPage({ DOM, Scroll }: SoAll): SiAll {
   const eventClickGoAbout$: Stream<Event> = DOM.select('.event-click-go-about').events('click');
   const inputScroll$: Stream<Event> = DOM.select(`.event-input-offset`).events('input');
+  const eventInputName$: Stream<Event> = DOM.select('.event-input-name').events('input');
 
-  const nameField = TextField({
-    DOM,
-    props: {
-      value: initialStore.name,
-      label: 'NAME',
-      placeholder: 'taro yamada',
-    },
-  });
-
-  const store$: Stream<Store> = nameField.value$
-    .map(value => makeUpdateNameAction(value))
+  const store$: Stream<Store> = eventInputName$
+    .map(e => makeUpdateNameAction((e.target as HTMLInputElement).value))
     .fold((acc: Store, action: Action<Store>) => action(acc), initialStore);
 
-  const dom$ = xs
-    .combine(store$, nameField.DOM, Scroll.startWith(''))
-    .map(([{ name }, nameFieldDOM, scroll]) => render({ name, nameFieldDOM, scroll }));
+  const dom$ = xs.combine(store$, Scroll.startWith('')).map(([{ name }, scroll]) => render({ name, scroll }));
   const router$ = eventClickGoAbout$.mapTo('/about');
 
   return {

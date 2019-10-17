@@ -1,5 +1,5 @@
 import { Color, Duration, FontSize, IconSize, LineHeight } from '@cyclejs-project/core/constants/VO';
-import { Icon } from '@cyclejs-project/core/renders/Icon';
+import { Icon } from '@cyclejs-project/core/renders/dataDisplay/Icon';
 import { SiDOM, SiRouter, SoDOM, SoRouter } from '@cyclejs-project/core/drivers/interface';
 import { VNode, a, div, h1, h2, h3, h4, header, li, nav, span, ul } from '@cycle/dom';
 import { css } from 'emotion';

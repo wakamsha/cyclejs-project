@@ -1,5 +1,8 @@
-import { example as Icon } from '@cyclejs-project/core/renders/Icon';
+import { example as FormLabel } from '@cyclejs-project/core/renders/inputs/FormLabel';
+import { example as Icon } from '@cyclejs-project/core/renders/dataDisplay/Icon';
+import { example as InvalidFeedback } from '@cyclejs-project/core/renders/feedback/InvalidFeedback';
 import { SiAll, SoAll } from '../drivers/interface';
+import { example as TextField } from '@cyclejs-project/core/renders/inputs/TextField';
 
 type Examples = {
   [workspace: string]: {
@@ -16,6 +19,13 @@ export const examples: Examples = {
     render: {
       dataDisplay: {
         Icon,
+      },
+      feedback: {
+        InvalidFeedback,
+      },
+      input: {
+        FormLabel,
+        TextField,
       },
     },
   },

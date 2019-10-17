@@ -1,9 +1,9 @@
-import { FontSize } from '../constants/VO';
+import { FontSize } from '../../constants/VO';
 import { IconName, iconElements } from '@cyclejs-project/icon';
-import { SiAll, SoAll } from '../drivers/interface';
+import { SiAll, SoAll } from '../../drivers/interface';
 import { VNode, li, span, svg, ul } from '@cycle/dom';
 import { css } from 'emotion';
-import { gutter, square } from '../helpers/Style';
+import { gutter, square } from '../../helpers/Style';
 import { lensPath, mergeAll, over } from 'ramda';
 import xs from 'xstream';
 

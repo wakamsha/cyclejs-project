@@ -1,5 +1,5 @@
 import { Color } from '@cyclejs-project/core/constants/VO';
-import { Icon } from '@cyclejs-project/core/renders/Icon';
+import { Icon } from '@cyclejs-project/core/renders/dataDisplay/Icon';
 import { SiAll, SoAll } from '../drivers/interface';
 import { VNode, div } from '@cycle/dom';
 import { css } from 'emotion';

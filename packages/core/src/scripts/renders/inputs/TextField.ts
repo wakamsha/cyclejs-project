@@ -1,11 +1,12 @@
 import { ColorTheme } from '../../constants/VO';
 import { FormLabel } from '../../renders/inputs/FormLabel';
 import { Icon } from '../../renders/dataDisplay/Icon';
+import { IconButton } from './IconButton';
 import { InvalidFeedback } from '../../renders/feedback/InvalidFeedback';
 import { SiAll, SoAll } from '../../drivers/interface';
-import { Stream } from 'xstream';
 import { TextInput as Style } from '../../styles/TextInput';
 import { VNode, code, div, h3, input, p, pre, span } from '@cycle/dom';
+import xs, { Stream } from 'xstream';
 
 type InputType = 'text' | 'email' | 'password' | 'number';
 
@@ -34,7 +35,7 @@ export function TextField(
     keyName,
     errorResult,
   }: Props,
-  children: (string | VNode)[] = [],
+  children: (string | VNode | null)[] = [],
 ): VNode {
   const invalid = !!errorResult && !!keyName;
   return div([
@@ -76,15 +77,20 @@ export function example({ DOM }: SoAll): SiAll {
   };
 
   const eventInput$: Stream<Event> = DOM.select('.event-input').events('input');
+  const eventClickClear$: Stream<Event> = DOM.select('.event-click-clear').events('click');
 
-  const value$ = eventInput$.map(e => (e.target as HTMLInputElement).value).startWith('');
+  const value$ = xs
+    .merge(eventInput$.map(e => (e.target as HTMLInputElement).value), eventClickClear$.mapTo(''))
+    .startWith('');
 
   const dom$ = value$.map(value =>
     div([
       h3(['Basic']),
       TextField('.input', {}),
       h3(['With Clear button']),
-      TextField('.event-input', { value }),
+      TextField('.event-input', { value }, [
+        value ? IconButton('.event-click-clear', { name: 'times', size: 'small', bare: true }) : null,
+      ]),
       pre([code([JSON.stringify({ value }, null, 2)])]),
       h3(['Variant']),
       p([TextField('.input', { label: '氏名' })]),

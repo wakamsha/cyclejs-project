@@ -10,7 +10,7 @@ import xs from 'xstream';
 type Props = {
   label: string;
   icon?: IconName;
-  selector?: string;
+  className?: string;
 };
 
 const baseStyle = css({
@@ -33,8 +33,8 @@ const baseStyle = css({
   },
 });
 
-export function Label({ label, icon, selector = '' }: Props): VNode {
-  return span(`${selector}.${baseStyle}`, [icon ? Icon(icon) : null, label]);
+export function Label({ label, icon, className = '' }: Props): VNode {
+  return span(`${className}.${baseStyle}`, [icon ? Icon(icon) : null, label]);
 }
 
 export function example(_: SoAll): SiAll {

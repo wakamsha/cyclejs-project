@@ -46,7 +46,7 @@ const previewInnerStyle = css({
   hr: {
     margin: '2em 0',
   },
-  '> h3': {
+  h3: {
     marginTop: '2em',
   },
   pre: {

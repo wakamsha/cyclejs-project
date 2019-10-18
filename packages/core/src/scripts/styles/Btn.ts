@@ -39,6 +39,12 @@ function variantColor(defaultColor: Color, hover: Color, ghostHover: Color) {
 }
 
 export namespace Btn {
+  export const label = css({
+    '+ svg': {
+      marginLeft: gutter(0.5),
+    },
+  });
+
   export const base = css({
     display: 'inline-flex',
     minWidth: 128,
@@ -73,18 +79,15 @@ export namespace Btn {
     },
     '> svg': {
       ...square(IconSize.Small),
-    },
-  });
-
-  export const iconPrefix = css({
-    '> svg': {
-      margin: `0 ${gutter(0.5)} 0 ${gutter(-1)}`,
-    },
-  });
-
-  export const iconSuffix = css({
-    '> svg': {
-      margin: `0 ${gutter(-1)} 0 ${gutter(0.5)}`,
+      '&:first-child:not(:last-child)': {
+        marginLeft: gutter(-1),
+      },
+      '&:last-child:not(:first-child)': {
+        marginRight: gutter(-1),
+      },
+      [`+ .${label}`]: {
+        marginLeft: gutter(0.5),
+      },
     },
   });
 

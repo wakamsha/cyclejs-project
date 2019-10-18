@@ -1,3 +1,4 @@
+import { example as Button } from '@cyclejs-project/core/renders/inputs/Button';
 import { example as FormLabel } from '@cyclejs-project/core/renders/inputs/FormLabel';
 import { example as Icon } from '@cyclejs-project/core/renders/dataDisplay/Icon';
 import { example as IconButton } from '@cyclejs-project/core/renders/inputs/IconButton';
@@ -25,6 +26,7 @@ export const examples: Examples = {
         InvalidFeedback,
       },
       input: {
+        Button,
         FormLabel,
         IconButton,
         TextField,

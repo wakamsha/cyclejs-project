@@ -1,4 +1,5 @@
 import { example as Button } from '@cyclejs-project/core/renders/inputs/Button';
+import { example as Card } from '@cyclejs-project/core/renders/surfaces/Card';
 import { example as Checkbox } from '@cyclejs-project/core/renders/inputs/Checkbox';
 import { example as FormLabel } from '@cyclejs-project/core/renders/inputs/FormLabel';
 import { example as Icon } from '@cyclejs-project/core/renders/dataDisplay/Icon';
@@ -36,6 +37,9 @@ export const examples: Examples = {
         IconButton,
         Radio,
         TextField,
+      },
+      surfaces: {
+        Card,
       },
     },
   },

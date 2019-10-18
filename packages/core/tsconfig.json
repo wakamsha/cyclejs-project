@@ -1,11 +1,12 @@
 {
-  "name": "@cyclejs-project/core",
-  "version": "0.0.0",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "@cyclejs-project/api": "0.0.0",
-    "@cyclejs-project/config": "0.0.0",
-    "@cyclejs-project/core": "0.0.0",
-    "@cyclejs-project/icon": "0.0.0"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@cyclejs-project/api/*": ["../api/dist/*"],
+      "@cyclejs-project/config/constants": ["../config/src/scripts/constants"],
+      "@cyclejs-project/icon": ["../icon/dist/index"],
+      "@cyclejs-project/core/*": ["../core/src/scripts/*"]
+    }
   }
 }

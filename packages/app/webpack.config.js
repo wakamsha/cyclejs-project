@@ -29,23 +29,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'cache-loader',
-          },
-          {
-            loader: 'thread-loader',
-            options: {
-              workers: require('os').cpus().length - 1,
-            },
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              happyPackMode: true,
-            },
-          },
-        ],
+        use: ['cache-loader', 'ts-loader'],
       },
     ],
   },

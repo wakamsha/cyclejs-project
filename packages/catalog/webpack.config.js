@@ -1,6 +1,7 @@
 const path = require('path');
 const argv = require('yargs').argv;
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const mode = !!argv.develop ? 'development' : 'production';
 
@@ -26,23 +27,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'cache-loader',
-          },
-          {
-            loader: 'thread-loader',
-            options: {
-              workers: require('os').cpus().length - 1,
-            },
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              happyPackMode: true,
-            },
-          },
-        ],
+        use: ['cache-loader', 'ts-loader'],
       },
     ],
   },

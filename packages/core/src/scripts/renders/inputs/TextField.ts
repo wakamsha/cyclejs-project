@@ -76,7 +76,7 @@ export function example({ DOM }: SoAll): SiAll {
     ],
   };
 
-  const eventInput$: Stream<Event> = DOM.select('.event-input').events('input');
+  const eventInput$: Stream<Event> = DOM.select('.event-input').events('click');
   const eventClickClear$: Stream<Event> = DOM.select('.event-click-clear').events('click');
 
   const value$ = xs
